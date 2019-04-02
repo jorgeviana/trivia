@@ -32,8 +32,9 @@ public class GoldenMaster {
 
     @Test
     public void run_game_1000_times() throws FileNotFoundException {
-        Random random = new Random(41);
-        new GameRunner(random).run();
-
+        for (int i = 0; i < 1000; i++) {
+            Random random = new Random(i);
+            new GameRunner(random).run();
+        }
     }
 }
