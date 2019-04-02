@@ -139,7 +139,7 @@ public class Game {
             return true;
         }
 
-        incrementPurse("Answer was correct!!!!");
+        incrementPurse();
 
         boolean winner = didPlayerWin();
         setNextPlayer();
@@ -147,8 +147,8 @@ public class Game {
         return winner;
     }
 
-    private void incrementPurse(String correctMessage) {
-        System.out.println(correctMessage);
+    private void incrementPurse() {
+        System.out.println("Answer was correct!!!!");
         purses[currentPlayer]++;
         System.out.println(players.get(currentPlayer)
                 + " now has "
