@@ -18,13 +18,17 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
-    	for (int i = 0; i < 50; i++) {
+		createQuestions();
+	}
+
+	private void createQuestions() {
+		for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
 			sportsQuestions.addLast(("Sports Question " + i));
 			rockQuestions.addLast(createRockQuestion(i));
-    	}
-    }
+		}
+	}
 
 	public String createRockQuestion(int index){
 		return "Rock Question " + index;
@@ -54,25 +58,24 @@ public class Game {
 	public void roll(int roll) {
 		printCurrentPlayer(roll);
 
-		if (inPenaltyBox[currentPlayer]) {
-			if (roll % 2 != 0) {
-				setPlayerOutOfPenaltyBox();
-
-				movePlayer(roll);
-
-				printCurrentCategory();
-				askQuestion();
-			} else {
+		if (isCurrentPlayerInPenaltyBox()) {
+			if (!isEven(roll)) {
 				setPlayerStaysInPenaltyBox();
+				return;
 			}
-			
-		} else {
-
-			movePlayer(roll);
-			printCurrentCategory();
-			askQuestion();
+			setPlayerOutOfPenaltyBox();
 		}
-		
+		movePlayer(roll);
+		printCurrentCategory();
+		askQuestion();
+	}
+
+	private boolean isEven(int roll) {
+		return roll % 2 != 0;
+	}
+
+	private boolean isCurrentPlayerInPenaltyBox() {
+		return inPenaltyBox[currentPlayer];
 	}
 
 	private void setPlayerStaysInPenaltyBox() {
@@ -128,7 +131,8 @@ public class Game {
 	}
 
 	public boolean wasCorrectlyAnswered() {
-		if (inPenaltyBox[currentPlayer]){
+		if (isCurrentPlayerInPenaltyBox()){
+
 			if (isGettingOutOfPenaltyBox) {
 				incrementPurse("Answer was correct!!!!");
 
