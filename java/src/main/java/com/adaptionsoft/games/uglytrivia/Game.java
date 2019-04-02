@@ -52,9 +52,8 @@ public class Game {
 	}
 
 	public void roll(int roll) {
-		System.out.println(players.get(currentPlayer) + " is the current player");
-		System.out.println("They have rolled a " + roll);
-		
+		printCurrentPlayer(roll);
+
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
@@ -77,6 +76,11 @@ public class Game {
 			askQuestion();
 		}
 		
+	}
+
+	private void printCurrentPlayer(int roll) {
+		System.out.println(players.get(currentPlayer) + " is the current player");
+		System.out.println("They have rolled a " + roll);
 	}
 
 	private void movePlayer(int roll) {
