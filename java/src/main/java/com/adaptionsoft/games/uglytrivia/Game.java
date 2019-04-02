@@ -58,13 +58,15 @@ public class Game {
 	public void roll(int roll) {
 		printCurrentPlayer(roll);
 
-		if (isCurrentPlayerInPenaltyBox()) {
-			if (!isEven(roll)) {
-				setPlayerStaysInPenaltyBox();
-				return;
-			}
+		if (isCurrentPlayerInPenaltyBox() && !isEven(roll)) {
+			setPlayerStaysInPenaltyBox();
+			return;
+		}
+
+		if (isCurrentPlayerInPenaltyBox() && isEven(roll)) {
 			setPlayerOutOfPenaltyBox();
 		}
+
 		movePlayer(roll);
 		printCurrentCategory();
 		askQuestion();
