@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    ArrayList players = new ArrayList();
+	public static final int MAXIMUM_PLACE = 12;
+	ArrayList players = new ArrayList();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -101,7 +102,7 @@ public class Game {
 
 	private void movePlayer(int roll) {
 		places[currentPlayer] = places[currentPlayer] + roll;
-		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+		if (places[currentPlayer] >= MAXIMUM_PLACE) places[currentPlayer] = places[currentPlayer] - MAXIMUM_PLACE;
 		System.out.println(players.get(currentPlayer)
 				+ "'s new location is "
 				+ places[currentPlayer]);
