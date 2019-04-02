@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.Random;
 
 public class GoldenMaster {
 
@@ -31,8 +32,8 @@ public class GoldenMaster {
 
     @Test
     public void run_game_1000_times() throws FileNotFoundException {
-
-        GameRunner.main(null);
+        Random random = new Random(41);
+        new GameRunner(random).run();
 
     }
 }
