@@ -150,7 +150,7 @@ public class Game {
 
         }
 
-        incrementPurse("Answer was corrent!!!!");
+        incrementPurse("Answer was correct!!!!");
 
         boolean winner = didPlayerWin();
         setNextPlayer();
