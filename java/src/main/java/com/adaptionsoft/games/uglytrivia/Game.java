@@ -134,20 +134,9 @@ public class Game {
     }
 
     public boolean wasCorrectlyAnswered() {
-        if (isCurrentPlayerInPenaltyBox()) {
-
-            if (!isGettingOutOfPenaltyBox) {
-                setNextPlayer();
-                return true;
-
-            }
-            incrementPurse("Answer was correct!!!!");
-
-            boolean winner = didPlayerWin();
+        if (isCurrentPlayerInPenaltyBox() && !isGettingOutOfPenaltyBox) {
             setNextPlayer();
-
-            return winner;
-
+            return true;
         }
 
         incrementPurse("Answer was correct!!!!");
@@ -156,7 +145,6 @@ public class Game {
         setNextPlayer();
 
         return winner;
-
     }
 
     private void incrementPurse(String correctMessage) {
