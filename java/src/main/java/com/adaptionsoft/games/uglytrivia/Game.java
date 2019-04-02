@@ -41,9 +41,9 @@ public class Game {
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
-	    
-	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + players.size());
+
+		printCurrentCategory(playerName, " was added");
+		System.out.println("They are player number " + players.size());
 		return true;
 	}
 	
@@ -57,29 +57,33 @@ public class Game {
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
-				
-				System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+
+				printCurrentCategory((String) players.get(currentPlayer), " is getting out of the penalty box");
 
 				movePlayer(roll);
 
-				System.out.println("The category is " + currentCategory());
+				printCurrentCategory("The category is ", currentCategory());
 				askQuestion();
 			} else {
-				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
+				printCurrentCategory((String) players.get(currentPlayer), " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
 		} else {
 
 			movePlayer(roll);
-			System.out.println("The category is " + currentCategory());
+			printCurrentCategory("The category is ", currentCategory());
 			askQuestion();
 		}
 		
 	}
 
+	private void printCurrentCategory(String s, String s2) {
+		System.out.println(s + s2);
+	}
+
 	private void printCurrentPlayer(int roll) {
-		System.out.println(players.get(currentPlayer) + " is the current player");
+		printCurrentCategory((String) players.get(currentPlayer), " is the current player");
 		System.out.println("They have rolled a " + roll);
 	}
 
@@ -159,7 +163,7 @@ public class Game {
 
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
-		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
+		printCurrentCategory((String) players.get(currentPlayer), " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 
 		setNextPlayer();
