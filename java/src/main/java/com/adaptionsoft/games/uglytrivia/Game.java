@@ -42,8 +42,8 @@ public class Game {
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 
-		printCurrentCategory(playerName, " was added");
-		System.out.println("They are player number " + players.size());
+	    System.out.println(playerName + " was added");
+	    System.out.println("They are player number " + players.size());
 		return true;
 	}
 	
@@ -58,32 +58,32 @@ public class Game {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 
-				printCurrentCategory((String) players.get(currentPlayer), " is getting out of the penalty box");
+				System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
 
 				movePlayer(roll);
 
-				printCurrentCategory("The category is ", currentCategory());
+				printCurrentCategory();
 				askQuestion();
 			} else {
-				printCurrentCategory((String) players.get(currentPlayer), " is not getting out of the penalty box");
+				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
 		} else {
 
 			movePlayer(roll);
-			printCurrentCategory("The category is ", currentCategory());
+			printCurrentCategory();
 			askQuestion();
 		}
 		
 	}
 
-	private void printCurrentCategory(String s, String s2) {
-		System.out.println(s + s2);
+	private void printCurrentCategory() {
+		System.out.println("The category is " + currentCategory());
 	}
 
 	private void printCurrentPlayer(int roll) {
-		printCurrentCategory((String) players.get(currentPlayer), " is the current player");
+		System.out.println(players.get(currentPlayer) + " is the current player");
 		System.out.println("They have rolled a " + roll);
 	}
 
@@ -163,7 +163,7 @@ public class Game {
 
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
-		printCurrentCategory((String) players.get(currentPlayer), " was sent to the penalty box");
+		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 
 		setNextPlayer();
