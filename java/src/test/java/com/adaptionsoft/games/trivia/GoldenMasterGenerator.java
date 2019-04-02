@@ -3,6 +3,7 @@ package com.adaptionsoft.games.trivia;
 import com.adaptionsoft.games.trivia.runner.GameRunner;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Random;
 
-public class GoldenMaster {
+public class GoldenMasterGenerator {
 
     private PrintStream out;
     private PrintStream defaultOut;
@@ -30,6 +31,7 @@ public class GoldenMaster {
         System.setOut(defaultOut);
     }
 
+    @Ignore
     @Test
     public void run_game_1000_times() throws FileNotFoundException {
         for (int i = 0; i < 1000; i++) {
