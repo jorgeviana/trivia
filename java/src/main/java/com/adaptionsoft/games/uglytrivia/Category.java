@@ -19,4 +19,8 @@ public class Category {
     public String getNextQuestion() {
         return questions.removeFirst();
     }
+
+    public String getName() {
+        return name;
+    }
 }

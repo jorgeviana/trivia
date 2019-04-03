@@ -1,40 +1,29 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.LinkedList;
+import java.util.*;
 
 public class Questions {
-    LinkedList<String> scienceQuestions = new LinkedList();
-    LinkedList<String> sportsQuestions = new LinkedList();
-    LinkedList<String> rockQuestions = new LinkedList();
-
-    Category pop = new Category("Pop");
-    Category science = new Category("Science");
-    Category sports = new Category("Sports");
-    Category rock = new Category("Rock");
+    List<Category> categories = Arrays.asList(
+            new Category("Pop"),
+            new Category("Science"),
+            new Category("Sports"),
+            new Category("Rock"));
 
     void fillQuestions() {
         for (int i = 0; i < 50; i++) {
-            pop.addQuestion("Pop Question " + i);
-            science.addQuestion("Science Question " + i);
-            sports.addQuestion("Sports Question " + i);
-            rock.addQuestion("Rock Question " + i);
+            for (Category category : categories) {
+                category.addQuestion(category.getName() +" Question " + i);
+            }
         }
     }
 
     String askQuestionForCategory(String currentCategory) {
-        if (currentCategory == "Pop") {
-            return pop.getNextQuestion();
-        }
-        if (currentCategory == "Science") {
-            return science.getNextQuestion();
-        }
-        if (currentCategory == "Sports") {
-            return sports.getNextQuestion();
-        }
-        if (currentCategory == "Rock") {
-            return rock.getNextQuestion();
-        }
-        return null;
+        Optional<Category> category = categories
+                .stream()
+                .filter(c -> currentCategory.equals(c.getName()))
+                .findFirst();
+        if (!category.isPresent()) return null;
+        return category.get().getNextQuestion();
     }
 
     String getCategoryForPlace(int currentPlace) {
