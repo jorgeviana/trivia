@@ -33,4 +33,5 @@ public class QuestionsShould {
 
         assertFalse(questions.askQuestionForCategory(questionCategory).isEmpty());
     }
+
 }
