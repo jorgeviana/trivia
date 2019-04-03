@@ -24,16 +24,16 @@ public class QuestionCategoryForPlaceShould {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 {0, "Pop"},
-                {4, "Pop"},
-                {8, "Pop"},
                 {1, "Science"},
-                {5, "Science"},
-                {9, "Science"},
                 {2, "Sports"},
-                {6, "Sports"},
-                {10, "Sports"},
                 {3, "Rock"},
+                {4, "Pop"},
+                {5, "Science"},
+                {6, "Sports"},
                 {7, "Rock"},
+                {8, "Pop"},
+                {9, "Science"},
+                {10, "Sports"},
                 {11, "Rock"},
         });
     }
