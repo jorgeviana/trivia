@@ -1,41 +1,24 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
     public static final int MAXIMUM_PLACE = 12;
 
+    Questions questions = new Questions();
     List<Player> playersList = new ArrayList<>();
 
     int[] places = new int[6];
     int[] purses = new int[6];
     boolean[] inPenaltyBox = new boolean[6];
 
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
 
     int indexOfCurrentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
 
     public Game() {
-        createQuestions();
-    }
-
-    private void createQuestions() {
-        for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
-        }
-    }
-
-    public String createRockQuestion(int index) {
-        return "Rock Question " + index;
+        questions.fillQuestions();
     }
 
     public boolean isPlayable() {
@@ -115,28 +98,14 @@ public class Game {
     }
 
     private void askQuestion() {
-        if (currentCategory() == "Pop")
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == "Science")
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == "Sports")
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == "Rock")
-            System.out.println(rockQuestions.removeFirst());
+        String currentCategory = currentCategory();
+        questions.askQuestionForCategory(currentCategory);
     }
 
 
     private String currentCategory() {
-        if (places[indexOfCurrentPlayer] == 0) return "Pop";
-        if (places[indexOfCurrentPlayer] == 4) return "Pop";
-        if (places[indexOfCurrentPlayer] == 8) return "Pop";
-        if (places[indexOfCurrentPlayer] == 1) return "Science";
-        if (places[indexOfCurrentPlayer] == 5) return "Science";
-        if (places[indexOfCurrentPlayer] == 9) return "Science";
-        if (places[indexOfCurrentPlayer] == 2) return "Sports";
-        if (places[indexOfCurrentPlayer] == 6) return "Sports";
-        if (places[indexOfCurrentPlayer] == 10) return "Sports";
-        return "Rock";
+        int currentPlace = places[indexOfCurrentPlayer];
+        return questions.getCategoryForPlace(currentPlace);
     }
 
     public boolean wasCorrectlyAnswered() {
