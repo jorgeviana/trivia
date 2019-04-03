@@ -2,12 +2,14 @@ package com.adaptionsoft.games.uglytrivia;
 
 import java.util.*;
 
+import static java.util.Arrays.asList;
+
 public class Questions {
-    List<Category> categories = Arrays.asList(
-            new Category("Pop"),
-            new Category("Science"),
-            new Category("Sports"),
-            new Category("Rock"));
+    List<Category> categories = asList(
+            new Category("Pop", asList(0, 4, 8)),
+            new Category("Science", asList(1, 5, 9)),
+            new Category("Sports", asList(2, 6, 10)),
+            new Category("Rock", asList(3, 7, 11)));
 
     void fillQuestions() {
         for (int i = 0; i < 50; i++) {
@@ -22,24 +24,20 @@ public class Questions {
                 .stream()
                 .filter(c -> currentCategory.equals(c.getName()))
                 .findFirst();
+
         if (!category.isPresent()) return null;
+
         return category.get().getNextQuestion();
     }
 
     String getCategoryForPlace(int currentPlace) {
-        if (currentPlace == 0) return "Pop";
-        if (currentPlace == 4) return "Pop";
-        if (currentPlace == 8) return "Pop";
-        if (currentPlace == 1) return "Science";
-        if (currentPlace == 5) return "Science";
-        if (currentPlace == 9) return "Science";
-        if (currentPlace == 2) return "Sports";
-        if (currentPlace == 6) return "Sports";
-        if (currentPlace == 10) return "Sports";
-        return "Rock";
-    }
+        Optional<Category> category = categories
+                .stream()
+                .filter(c -> c.isForPlace(currentPlace))
+                .findFirst();
 
-    private String createRockQuestion(int index) {
-        return "Rock Question " + index;
+        if (!category.isPresent()) return "Rock";
+
+        return category.get().getName();
     }
 }
