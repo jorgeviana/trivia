@@ -3,10 +3,10 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.LinkedList;
 
 public class Questions {
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
+    LinkedList<String> popQuestions = new LinkedList();
+    LinkedList<String> scienceQuestions = new LinkedList();
+    LinkedList<String> sportsQuestions = new LinkedList();
+    LinkedList<String> rockQuestions = new LinkedList();
 
 
     void fillQuestions() {
@@ -18,19 +18,20 @@ public class Questions {
         }
     }
 
-    public String createRockQuestion(int index) {
-        return "Rock Question " + index;
-    }
-
-    void askQuestionForCategory(String currentCategory) {
-        if (currentCategory == "Pop")
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory == "Science")
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory == "Sports")
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory == "Rock")
-            System.out.println(rockQuestions.removeFirst());
+    String askQuestionForCategory(String currentCategory) {
+        if (currentCategory == "Pop") {
+            return popQuestions.removeFirst();
+        }
+        if (currentCategory == "Science") {
+            return scienceQuestions.removeFirst();
+        }
+        if (currentCategory == "Sports") {
+            return sportsQuestions.removeFirst();
+        }
+        if (currentCategory == "Rock") {
+            return rockQuestions.removeFirst();
+        }
+        return null;
     }
 
     String getCategoryForPlace(int currentPlace) {
@@ -44,5 +45,9 @@ public class Questions {
         if (currentPlace == 6) return "Sports";
         if (currentPlace == 10) return "Sports";
         return "Rock";
+    }
+
+    private String createRockQuestion(int index) {
+        return "Rock Question " + index;
     }
 }

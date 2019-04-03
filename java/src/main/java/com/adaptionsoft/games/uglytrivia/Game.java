@@ -99,7 +99,8 @@ public class Game {
 
     private void askQuestion() {
         String currentCategory = currentCategory();
-        questions.askQuestionForCategory(currentCategory);
+        Object question = questions.askQuestionForCategory(currentCategory);
+        System.out.println(question);
     }
 
 
