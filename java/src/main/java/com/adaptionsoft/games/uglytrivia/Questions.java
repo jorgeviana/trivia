@@ -6,9 +6,10 @@ import static java.util.Arrays.asList;
 
 public class Questions {
     List<Category> categories = asList(
-            new Category("Pop", asList(0, 4, 8)),
+            new Category("Pop", asList(4, 8)),
             new Category("Science", asList(1, 5, 9)),
-            new Category("Sports", asList(2, 6, 10)),
+            new Category("Sports", asList(2, 10)),
+            new Category("Barcelona", asList(0, 6)),
             new Category("Rock", asList(3, 7, 11)));
 
     void fillQuestions() {

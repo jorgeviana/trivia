@@ -15,7 +15,7 @@ public class QuestionsShould {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                {"Pop"}, {"Rock"}, {"Science"}, {"Sports"}
+                {"Pop"}, {"Rock"}, {"Science"}, {"Sports"}, {"Barcelona"}
         });
     }
 

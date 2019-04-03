@@ -23,13 +23,13 @@ public class QuestionCategoryForPlaceShould {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                {0, "Pop"},
+                {0, "Barcelona"},
                 {1, "Science"},
                 {2, "Sports"},
                 {3, "Rock"},
                 {4, "Pop"},
                 {5, "Science"},
-                {6, "Sports"},
+                {6, "Barcelona"},
                 {7, "Rock"},
                 {8, "Pop"},
                 {9, "Science"},
