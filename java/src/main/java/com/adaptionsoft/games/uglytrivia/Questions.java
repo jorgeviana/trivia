@@ -3,33 +3,36 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.LinkedList;
 
 public class Questions {
-    LinkedList<String> popQuestions = new LinkedList();
     LinkedList<String> scienceQuestions = new LinkedList();
     LinkedList<String> sportsQuestions = new LinkedList();
     LinkedList<String> rockQuestions = new LinkedList();
 
+    Category pop = new Category("Pop");
+    Category science = new Category("Science");
+    Category sports = new Category("Sports");
+    Category rock = new Category("Rock");
 
     void fillQuestions() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
+            pop.addQuestion("Pop Question " + i);
+            science.addQuestion("Science Question " + i);
+            sports.addQuestion("Sports Question " + i);
+            rock.addQuestion("Rock Question " + i);
         }
     }
 
     String askQuestionForCategory(String currentCategory) {
         if (currentCategory == "Pop") {
-            return popQuestions.removeFirst();
+            return pop.getNextQuestion();
         }
         if (currentCategory == "Science") {
-            return scienceQuestions.removeFirst();
+            return science.getNextQuestion();
         }
         if (currentCategory == "Sports") {
-            return sportsQuestions.removeFirst();
+            return sports.getNextQuestion();
         }
         if (currentCategory == "Rock") {
-            return rockQuestions.removeFirst();
+            return rock.getNextQuestion();
         }
         return null;
     }
