@@ -55,7 +55,6 @@ public class Game {
     }
 
     public int howManyPlayers() {
-        //return players.size();
         return playersList.size();
     }
 
